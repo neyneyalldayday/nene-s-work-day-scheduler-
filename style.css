@@ -1,0 +1,80 @@
+
+
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  background-image: linear-gradient(122deg,#497eb0,#fbc);
+  min-height: 100vh;
+}
+
+textarea {
+  background: transparent;
+  border: none;
+  resize: none;
+  color: #000000;
+  border-left: 1px solid black;
+  padding: 10px;
+  
+}
+
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+  color: black;
+  border-radius: 0;
+  border-bottom: 10px solid black;
+  font-family: 'Monoton', cursive;
+}
+
+.description {
+  white-space: pre-wrap;
+}
+
+.time-block {
+  text-align: center;
+  border-radius: 15px;
+  
+  
+}
+
+.row {
+  white-space: pre-wrap;
+  height: 80px;
+  border-top: 1px solid teal;
+}
+
+.hour {
+  background-image: linear-gradient(122deg,#497eb0,#fbc);
+  color: #000000;
+  border-top: 1px dashed teal;
+}
+
+.past {
+  background-image: linear-gradient(122deg,#b3b3b3,#fbc);
+  color: white;
+}
+
+.present {
+  background-image: linear-gradient(122deg,#ff6961,#fbc);
+  color: white;
+}
+
+.future {
+  background-image: linear-gradient(122deg,#77dd77,#fbc);
+  color: white;
+}
+
+.saveBtn {
+  border: 1px solid black;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-image: linear-gradient(122deg,#497eb0,#fbc);
+  color: white;
+}
+
+.saveBtn i:hover {
+  font-size: 20px;
+  transition: all .3s ease-in-out;
+}

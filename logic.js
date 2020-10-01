@@ -17,7 +17,7 @@ $(document).ready(function () {
         var saveButton = $("<button>");
         var iconEl = $("<i>");
 
-        // setting attributes and messing with css
+        // setting attributes 
         freshEl.attr("data-hour", workingHours[i]);
         freshEl.attr("class", "row")
         agendaEl.attr("class", "col-10");
@@ -41,7 +41,7 @@ $(document).ready(function () {
 
         timeEl.text(workingHours[i]);
 
-        // trying to make these colors dynamically change
+        // dynamically changing colors
 
         if ((i + 9) < moment().hour()) {
             agendaEl.attr("class", "col-10 past");
@@ -51,13 +51,10 @@ $(document).ready(function () {
             agendaEl.attr("class", "col-10 future");
         }
     }
+    //save button functionality
     $(".saveBtn").on("click", function () {
         var textKey = "newInfo" + this.id;
-        var textEl = "#text" + this.id;
-        console.log(this.id)
-        // my local storage set up
-        console.log(textKey)
-        console.log(textEl)
+        var textEl = "#text" + this.id;       
         localStorage.setItem(textKey, $(textEl).val());
     })
 

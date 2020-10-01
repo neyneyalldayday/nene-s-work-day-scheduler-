@@ -1,76 +1,54 @@
 $(document).ready(function () {
-    // i need to list my variables
-    var workHours = [9, 10, 11, 12, 13, 14, 15, 16, 17]
-    var todaysDate = moment().format('MMMM Do YYYY');
-    var localTime = moment().format('H');
+    // work hours current date and local san antonio time as variables
+    var timeCounter = function () {
+        $("#thisDay").text(moment().format('MMMM Do YYYY, h:mm a'));
+    };
+    timeCounter()
+    setInterval(timeCounter, 1000);
+    var workingHours = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]
 
 
-    console.log(localTime)
-    // displaying the date
-    $("#currentDay").append(todaysDate)
+    // for loop 
+    for (var i = 0; i < workingHours.length; i++) {
 
-
-
-    //for loop 
-    for (var i = 0; i < workHours.length; i++) {
-        // make these freaking colors work
-        if (workHours[i] / 12 > 1) {
-
-            console.log(workHours[i]);
-            timeDay = "PM";
-            console.log(workHours[i] * 10);
-            hour = workHours[i] - 12;
-        } else {
-            var hour = workHours[i];
-            if (workHours[i] == 12) {
-                timeDay = "PM"
-            } else {
-                timeDay = "AM"
-            };
-        };
-
-
-
-        // creating my elements
-        var newEl = $("<div>");
+        var freshEl = $("<div>");
         var timeEl = $("<div>");
-        var planEl = $("<textarea>");
+        var agendaEl = $("<textarea>");
         var saveButton = $("<button>");
         var iconEl = $("<i>");
 
-
         // setting attributes and messing with css
-        newEl.attr("data-hour", workHours[i]);
-        newEl.attr("class", "row")
-        planEl.attr("class", "description col 10");
-        planEl.attr("id", "text" + [i]);
+        freshEl.attr("data-hour", workingHours[i]);
+        freshEl.attr("class", "row")
+        agendaEl.attr("class", "col-10");
+        agendaEl.attr("id", "text" + [i]);
         timeEl.attr("class", "hour col-1");
         saveButton.attr("class", "saveBtn col-1");
         saveButton.attr("id", [i]);
         iconEl.attr("class", "far fa-save");
 
-
         // attaching the elements
-        $(".container").append(newEl)
+        $(".container").append(freshEl)
 
-        newEl.append(timeEl)
-        newEl.append(planEl)
-        newEl.append(saveButton)
+        freshEl.append(timeEl)
+        freshEl.append(agendaEl)
+        freshEl.append(saveButton)
         saveButton.append(iconEl)
 
         $("#text" + [i]).append(
             localStorage.getItem("newInfo" + [i])
         );
 
-        timeEl.text(hour + timeDay);
+        timeEl.text(workingHours[i]);
 
         // trying to make these colors dynamically change
-        if (workHours[i] == localTime) {
-            planEl.attr("class", "description col 10 present")
-        } else if (workHours[i] < localTime) {
-            planEl.attr("class", "description col 10 past")
+
+        if ((i + 9) < moment().hour()) {
+            agendaEl.attr("class", "col-10 past");
+        } else if ((i + 9) === moment().hour()) {
+            agendaEl.attr("class", "col-10 present");
         } else {
-            planEl.attr("class", "description col 10 future")
+            agendaEl.attr("class", "col-10 future");
         }
     }
     $(".saveBtn").on("click", function () {

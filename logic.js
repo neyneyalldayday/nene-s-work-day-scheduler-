@@ -10,14 +10,14 @@ $(document).ready(function () {
 
     // for loop 
     for (var i = 0; i < workingHours.length; i++) {
-
+        //connecting variables to where they will be used
         var freshEl = $("<div>");
         var timeEl = $("<div>");
         var agendaEl = $("<textarea>");
         var saveButton = $("<button>");
         var iconEl = $("<i>");
 
-        // setting attributes 
+        // setting attributes for the elements
         freshEl.attr("data-hour", workingHours[i]);
         freshEl.attr("class", "row")
         agendaEl.attr("class", "col-10");
@@ -34,14 +34,14 @@ $(document).ready(function () {
         freshEl.append(agendaEl)
         freshEl.append(saveButton)
         saveButton.append(iconEl)
-
+        //funtion method for saving what you type in
         $("#text" + [i]).append(
             localStorage.getItem("newInfo" + [i])
         );
 
         timeEl.text(workingHours[i]);
 
-        // dynamically changing colors
+        // dynamically changing colors based off time of day
 
         if ((i + 9) < moment().hour()) {
             agendaEl.attr("class", "col-10 past");
